@@ -1,0 +1,204 @@
+//B MrZ
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+#include<iostream>
+#include<string.h>
+using namespace std;
+
+void pila();
+void cola();
+struct Nodo{
+ int dato;
+ Nodo *siguiente;
+};
+ int i,j;
+ int num;
+void insertar(Nodo *&, int);
+void borrarpila(Nodo *&);
+void mostrarElementos(Nodo *&);
+	
+int main(int argc, char const *argv[])
+{
+}
+
+void pila()
+{
+	int opc;
+    do{
+        printf("\n\t\t|-----------------------------------------|");
+        printf("\n\t\t|               OPCIONES                  |");
+        printf("\n\t\t|------------------|----------------------|");
+        printf("\n\t\t|                  |                      |");
+        printf("\n\t\t|   1. Agregar     |      2. Mostrar      |");
+        printf("\n\t\t|                  |                      |");
+        printf("\n\t\t|              3.Eliminar                 |");
+        printf("\n\t\t|                  |                      |");
+        printf("\n\t\t|------------------|----------------------|");
+        printf("\n\t\t|-----------------------------------------|");
+        printf("\n\n\t\t\t    ESCOJA UNA OPCION: ");
+        printf("\n\n                            ");
+        scanf("%d",&opc);
+        
+        
+        switch(opc){
+            case 1:
+                system("cls");
+                agregar();
+                break;
+            case 2:
+                system("cls");
+                msotrarElementos();
+                break;
+             case 3:
+                system("cls");
+        		borrarpila();
+                break;   
+                
+            default:
+                system("cls");
+                printf("\n\n");
+                printf("\t\t      LA OPCION INGRESADA ES INVALIDA!!\n");
+                printf("\n\n");
+                printf("\t\t           DIGITE UNA OPCION VALIDA      ");
+                printf("\n\n");
+        }
+    }while(opc != 0);
+}
+	void agregar(){
+	Nodo *pila= NULL;
+ int dato;
+ printf("Digite la cantidad de datos:\n");
+ printf("\n");
+  scanf("%d",&num);
+ for(i=0; i<num ; i++){
+ 	printf("\n\n");
+ 	printf("Digitelos\n");
+ 	scanf("%d",&dato);
+ insertar(pila,dato);
+}
+ printf("Sacar elementos de la pila \n");
+  borrarpila(pila);
+
+
+void cola(){
+	struct Nodo{
+ int dato;
+ int num;
+ int i,j;
+ Nodo *siguiente;
+};
+
+void pushcola(Nodo *&,Nodo *&,int);
+void popcola(Nodo *&,Nodo *&,int &);
+bool colaVacia(Nodo *);
+
+int main(int argc, char const *argv[])
+{
+
+	void cola(){
+	
+	int opc;
+    do{
+        printf("\n\t\t|-----------------------------------------|");
+        printf("\n\t\t|               OPCIONES                  |");
+        printf("\n\t\t|------------------|----------------------|");
+        printf("\n\t\t|                  |                      |");
+        printf("\n\t\t|   1. Agregar     |      2. Mostrar      |");
+        printf("\n\t\t|                  |                      |");
+        printf("\n\t\t|              3.Eliminar                 |");
+        printf("\n\t\t|                  |                      |");
+        printf("\n\t\t|------------------|----------------------|");
+        printf("\n\t\t|-----------------------------------------|");
+        printf("\n\n\t\t\t    ESCOJA UNA OPCION: ");
+        printf("\n\n                            ");
+        scanf("%d",&opc);
+        
+        
+        switch(opc){
+            case 1:
+                system("cls");
+                agregar();
+                break;
+            case 2:
+                system("cls");
+                pushcola();
+                break;
+             case 3:
+                system("cls");
+        		popcola();
+                break;   
+                
+            default:
+                system("cls");
+                printf("\n\n");
+                printf("\t\t      LA OPCION INGRESADA ES INVALIDA!!\n");
+                printf("\n\n");
+                printf("\t\t           DIGITE UNA OPCION VALIDA      ");
+                printf("\n\n");
+        }
+    }while(opc != 0);
+}
+	int dato,i,num;
+ Nodo *frente = NULL;
+ Nodo *fin = NULL;
+printf("Digite la cantidad de datos:\n");
+ printf("\n");
+  scanf("%d",&num);
+ for(i=0; i<num ; i++){
+ 	printf("\n\n");
+ 	printf("Digitelos\n");
+ 	scanf("%d",&dato);
+ pushcola(frente,fin,dato);
+}
+ 
+ while(frente != NULL){
+ popcola(frente,fin,dato);
+ if(frente != NULL){
+ printf("%d,",dato);
+  }else{
+   printf("%d.",dato);
+  }
+}
+ system("pause");
+  return 0;
+}
+
+void pushcola(Nodo *&frente,Nodo *&fin,int n){
+ Nodo *nuevo_nodo = new Nodo();
+ nuevo_nodo ->dato = n;
+ nuevo_nodo -> siguiente=NULL;
+ if(colaVacia(frente)){
+ frente=nuevo_nodo;
+ }else{
+ fin -> siguiente = nuevo_nodo;
+ }
+ fin = nuevo_nodo;
+ printf("El dato %d se agrego correctamente a la Cola\n",n );
+}
+
+bool colaVacia(Nodo *frente)
+{
+ return (frente==NULL)?true : false;
+}
+void popcola(Nodo *&frente,Nodo *&fin,int &n)
+{
+ n=frente->dato;
+ Nodo *aux = frente;
+ 
+ if(frente == fin)
+ {
+ frente = NULL;
+ fin = NULL;
+ }
+ else
+ {
+ frente = frente -> siguiente;
+ }
+ delete aux;
+}
+}
+  
+
+}
